@@ -17,6 +17,14 @@ class Mailer
 
     public function run()
     {
+        if (!$this->transport->ping()) {
+            $this->transport->stop();
+            $this->transport->start();
+        }
 
+        //TODO: Get message from some source and sent via transport
+
+
+        $this->transport->stop();
     }
 }
